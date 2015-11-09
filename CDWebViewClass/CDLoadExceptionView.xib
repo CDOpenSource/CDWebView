@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIView"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CDLoadExceptionView">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_no_one.png" translatesAutoresizingMaskIntoConstraints="NO" id="rjH-G8-mJC">
+                    <rect key="frame" x="120" y="40" width="60" height="60"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="Mpo-0L-jMA"/>
+                        <constraint firstAttribute="height" constant="60" id="siO-8c-ZOc"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数据获取异常，请稍后重试！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTA-ry-eWy">
+                    <rect key="frame" x="10" y="120" width="280" height="19.5"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOo-he-JAX">
+                    <rect key="frame" x="110" y="164.5" width="80" height="35"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="Knv-hy-Xdn"/>
+                        <constraint firstAttribute="width" constant="80" id="RUC-EA-YDX"/>
+                    </constraints>
+                    <state key="normal" title="重试">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonPressEvent:" destination="iN0-l3-epB" eventType="touchUpInside" id="Srz-54-hIU"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="dTA-ry-eWy" secondAttribute="trailing" constant="10" id="8bi-5D-VL6"/>
+                <constraint firstItem="dTA-ry-eWy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="8gs-pM-tlQ"/>
+                <constraint firstItem="nOo-he-JAX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BBD-eh-Nrl"/>
+                <constraint firstItem="dTA-ry-eWy" firstAttribute="top" secondItem="rjH-G8-mJC" secondAttribute="bottom" constant="20" id="nBq-Ec-fAL"/>
+                <constraint firstItem="rjH-G8-mJC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-80" id="nCH-cp-Vhw"/>
+                <constraint firstItem="nOo-he-JAX" firstAttribute="top" secondItem="dTA-ry-eWy" secondAttribute="bottom" constant="25" id="oPP-Dv-sQZ"/>
+                <constraint firstItem="rjH-G8-mJC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uvY-KC-3IM"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="buttonReload" destination="nOo-he-JAX" id="Q4c-7R-Dpr"/>
+                <outlet property="labelDescription" destination="dTA-ry-eWy" id="4gZ-s2-tWW"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="img_no_one.png" width="159" height="159"/>
+    </resources>
+</document>
