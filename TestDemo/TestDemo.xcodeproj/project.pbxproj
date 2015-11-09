@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372C7BD41BF0911F001A08F0 /* JSAndOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 372C7BD31BF0911F001A08F0 /* JSAndOCViewController.m */; };
+		372C7BD81BF09678001A08F0 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 372C7BD71BF09678001A08F0 /* test.html */; };
+		372C7BDB1BF098F0001A08F0 /* WebLoadedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 372C7BDA1BF098F0001A08F0 /* WebLoadedViewController.m */; };
 		37AAF16F1BF04985003DB6A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AAF16E1BF04985003DB6A8 /* main.m */; };
 		37AAF1721BF04985003DB6A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AAF1711BF04985003DB6A8 /* AppDelegate.m */; };
 		37AAF17A1BF04985003DB6A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37AAF1791BF04985003DB6A8 /* Assets.xcassets */; };
@@ -22,6 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		372C7BD21BF0911F001A08F0 /* JSAndOCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSAndOCViewController.h; sourceTree = "<group>"; };
+		372C7BD31BF0911F001A08F0 /* JSAndOCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSAndOCViewController.m; sourceTree = "<group>"; };
+		372C7BD71BF09678001A08F0 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		372C7BD91BF098F0001A08F0 /* WebLoadedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLoadedViewController.h; sourceTree = "<group>"; };
+		372C7BDA1BF098F0001A08F0 /* WebLoadedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebLoadedViewController.m; sourceTree = "<group>"; };
 		37AAF16A1BF04985003DB6A8 /* TestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37AAF16E1BF04985003DB6A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		37AAF1701BF04985003DB6A8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -81,6 +89,10 @@
 				37AAF1711BF04985003DB6A8 /* AppDelegate.m */,
 				37AAF1A11BF07028003DB6A8 /* ViewController.h */,
 				37AAF1A21BF07028003DB6A8 /* ViewController.m */,
+				372C7BD91BF098F0001A08F0 /* WebLoadedViewController.h */,
+				372C7BDA1BF098F0001A08F0 /* WebLoadedViewController.m */,
+				372C7BD21BF0911F001A08F0 /* JSAndOCViewController.h */,
+				372C7BD31BF0911F001A08F0 /* JSAndOCViewController.m */,
 				37AAF16D1BF04985003DB6A8 /* Supporting Files */,
 			);
 			path = TestDemo;
@@ -89,6 +101,7 @@
 		37AAF16D1BF04985003DB6A8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				372C7BD71BF09678001A08F0 /* test.html */,
 				37AAF1A61BF07849003DB6A8 /* img_no_one.png */,
 				37AAF17E1BF04985003DB6A8 /* Info.plist */,
 				37AAF1791BF04985003DB6A8 /* Assets.xcassets */,
@@ -182,6 +195,7 @@
 				37AAF17D1BF04985003DB6A8 /* LaunchScreen.storyboard in Resources */,
 				37AAF1911BF04B37003DB6A8 /* CDLoadExceptionView.xib in Resources */,
 				37AAF17A1BF04985003DB6A8 /* Assets.xcassets in Resources */,
+				372C7BD81BF09678001A08F0 /* test.html in Resources */,
 				37AAF1A71BF07849003DB6A8 /* img_no_one.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,8 +209,10 @@
 			files = (
 				37AAF1A31BF07028003DB6A8 /* ViewController.m in Sources */,
 				37AAF18F1BF04B0F003DB6A8 /* CDLoadExceptionView.m in Sources */,
+				372C7BDB1BF098F0001A08F0 /* WebLoadedViewController.m in Sources */,
 				37AAF1961BF04CBA003DB6A8 /* CDWebView.m in Sources */,
 				37AAF1721BF04985003DB6A8 /* AppDelegate.m in Sources */,
+				372C7BD41BF0911F001A08F0 /* JSAndOCViewController.m in Sources */,
 				37AAF16F1BF04985003DB6A8 /* main.m in Sources */,
 				37AAF1991BF04D6E003DB6A8 /* MBProgressHUD.m in Sources */,
 			);

@@ -125,7 +125,13 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
     } else {
         if (SDK_VERSION >= 8.0) {
             MTDetailLog(@"【 WKWeb 】 --> URL=%@",self.request.URL.absoluteString);
-            [_wkWebView loadRequest:self.request];
+            if (self.request.URL.isFileURL) {
+                NSString * htmlCont = [NSString stringWithContentsOfFile:self.request.URL.path encoding:NSUTF8StringEncoding error:nil];
+                [_wkWebView loadHTMLString:htmlCont baseURL:nil];
+            } else {
+                [_wkWebView loadRequest:self.request];
+            }
+            
         } else {
             MTDetailLog(@"【 UIWeb 】 --> URL=%@",self.request.URL.absoluteString);
             [_webView loadRequest:self.request];
@@ -249,7 +255,7 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
 //  请求开始时发生错误
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
 {
-    MTDetailLog(@"didFailProvisionalNavigation");
+    MTDetailLog(@"didFailProvisionalNavigation  Error:%@",error);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ([self.delegate respondsToSelector:@selector(cdWebView:didLoadFailedWithError:)]) {
             [self.delegate cdWebView:self didLoadFailedWithError:error];
@@ -263,7 +269,7 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
 //  请求期间发生错误
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
 {
-    MTDetailLog(@"didFailNavigation");
+    MTDetailLog(@"didFailNavigation   Error:%@",error);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ([self.delegate respondsToSelector:@selector(cdWebView:didLoadFailedWithError:)]) {
             [self.delegate cdWebView:self didLoadFailedWithError:error];

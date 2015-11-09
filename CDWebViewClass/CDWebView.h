@@ -59,13 +59,13 @@ typedef NS_ENUM(NSInteger, CDWebViewNavigationType) {
 
 
 @protocol CDWebViewDelegate <NSObject>
-@required
-- (NSArray *)arrayOfRegisterToJSFunctionNameWithWebController:(CDWebView *)webController;
-@optional
+@optional  //  loaded  web  data
 - (BOOL)cdWebView:(CDWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(CDWebViewNavigationType)navigationType;
 - (void)cdWebViewDidStartLoad:(CDWebView *)webView;
 - (void)cdWebViewDidFinishLoad:(CDWebView *)webView;
 - (void)cdWebView:(CDWebView *)webView  didLoadFailedWithError:(NSError *)error;
+@optional   //  js   oc  each other
+- (NSArray *)arrayOfRegisterToJSFunctionNameWithWebController:(CDWebView *)webController;
 - (void)cdWebView:(CDWebView *)webController didCalledJSFunctionName:(NSString *)functionName andParam:(NSString *)jsonString;
 @end
 
