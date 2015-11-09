@@ -1,0 +1,2 @@
+# CDWebView
+CDWebView是WKWebView和UIWebView的结合体，完美兼容所有的ios版本，CDWebView会根据当前运行的sdk的版本来选择能支持的最佳web容器（UIWeb或WKWeb），并且封装了与js的交互，利用代理现实了统一的接口，使用方法非常简单易懂。
