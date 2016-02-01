@@ -52,7 +52,12 @@ typedef NS_ENUM(NSInteger, CDWebViewNavigationType) {
 - (instancetype)init NS_DEPRECATED(10_0, 10_11, 2_0, 2_0, "请使用  initWithDelegate: andView: 方法来创建 CDWebView 的实例");
 - (instancetype)initWithDelegate:(id<CDWebViewDelegate>)delegate andView:(UIView *)view;
 - (void)evaluateJavaScriptWith:(NSString *)scriptString;
+
 - (void)reloadRequestWebData;
+- (BOOL)canGoBack;
+- (BOOL)canGoForward;
+- (void)goBack;
+- (void)goForward;
 
 @end
 
@@ -66,7 +71,7 @@ typedef NS_ENUM(NSInteger, CDWebViewNavigationType) {
 - (void)cdWebView:(CDWebView *)webView  didLoadFailedWithError:(NSError *)error;
 @optional   //  js   oc  each other
 - (NSArray *)arrayOfRegisterToJSFunctionNameWithWebController:(CDWebView *)webController;
-- (void)cdWebView:(CDWebView *)webController didCalledJSFunctionName:(NSString *)functionName andParam:(NSString *)jsonString;
+- (void)cdWebView:(CDWebView *)webController didCalledJSFunctionName:(NSString *)functionName andParam:(id)jsonString;
 @end
 
 

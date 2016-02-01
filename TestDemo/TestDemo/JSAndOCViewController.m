@@ -78,7 +78,7 @@
 }
 
 //  js  called  oc
-- (void)cdWebView:(CDWebView *)webController didCalledJSFunctionName:(NSString *)functionName andParam:(NSString *)jsonString
+- (void)cdWebView:(CDWebView *)webController didCalledJSFunctionName:(NSString *)functionName andParam:(id)jsonString
 {
     if ([functionName isEqualToString:@"TestJsCalledOCFunctionName"]) {
         MTDetailLog(@"js called oc success !   param:%@",jsonString);

@@ -33,6 +33,15 @@
     [_webView reloadRequestWebData];
 }
 
+- (void)back:(UIButton *)button
+{
+    if ([_webView canGoBack]) {
+        [_webView goBack];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 #pragma mark - view
 - (void)viewWillLayoutSubviews
 {
@@ -43,6 +52,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"Test Web Loaded";
+    
+    UIButton *button = [[UIButton alloc] init];
+    NSString *soundButtonTitle = @"返回";
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+    [button setTitle:soundButtonTitle forState:UIControlStateNormal];
+    [button setTitle:soundButtonTitle forState:UIControlStateSelected];
+    [button setTitle:soundButtonTitle forState:UIControlStateHighlighted];
+    [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    button.frame =CGRectMake(0, 0, 30, 50.0);
+    // 监听按钮点击
+    [button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
     
     /**
      * 初始化 webView
@@ -98,7 +120,7 @@
 }
 
 //  js  called  oc
-- (void)cdWebView:(CDWebView *)webController didCalledJSFunctionName:(NSString *)functionName andParam:(NSString *)jsonString
+- (void)cdWebView:(CDWebView *)webController didCalledJSFunctionName:(NSString *)functionName andParam:(id)jsonString
 {
     
 }

@@ -101,23 +101,7 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
     
 }
 
-#pragma mark -  oc  called  js
-- (void)evaluateJavaScriptWith:(NSString *)scriptString
-{
-    if (scriptString == nil || scriptString.length == 0) {
-        return;
-    } else {
-        if (SDK_VERSION >= 8.0) {
-            [_wkWebView evaluateJavaScript:scriptString completionHandler:^(id _Nullable returnValue, NSError * _Nullable error) {
-                MTDetailLog(@"evaluateJavaScript result : \n error : %@  \nreturnValue:%@",error,returnValue);
-            }];
-        } else {
-            NSString *result = [_webView stringByEvaluatingJavaScriptFromString:scriptString];
-            MTDetailLog(@"stringByEvaluatingJavaScriptFromString result : \n error : %@",result);
-        }
-    }
-}
-
+#pragma mark - Public Method -
 - (void)reloadRequestWebData
 {
     if (self.request == nil) {
@@ -135,6 +119,67 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
         } else {
             MTDetailLog(@"【 UIWeb 】 --> URL=%@",self.request.URL.absoluteString);
             [_webView loadRequest:self.request];
+        }
+    }
+}
+
+- (BOOL)canGoBack
+{
+    if (SDK_VERSION >= 8.0) {
+        return [_wkWebView canGoBack];
+    } else {
+        return [_webView canGoBack];
+    }
+}
+
+- (BOOL)canGoForward
+{
+    if (SDK_VERSION >= 8.0) {
+        return [_wkWebView canGoForward];
+    } else {
+        return [_webView canGoForward];
+    }
+}
+
+- (void)goBack
+{
+    if (SDK_VERSION >= 8.0) {
+        if ([_wkWebView canGoBack]) {
+            [_wkWebView goBack];
+        }
+    } else {
+        if ([_webView canGoBack]) {
+            [_webView goBack];
+        }
+    }
+}
+
+- (void)goForward
+{
+    if (SDK_VERSION >= 8.0) {
+        if ([_wkWebView canGoForward]) {
+            [_wkWebView goForward];
+        }
+    } else {
+        if ([_webView canGoForward]) {
+            [_webView goForward];
+        }
+    }
+}
+
+#pragma mark  oc  called  js
+- (void)evaluateJavaScriptWith:(NSString *)scriptString
+{
+    if (scriptString == nil || scriptString.length == 0) {
+        return;
+    } else {
+        if (SDK_VERSION >= 8.0) {
+            [_wkWebView evaluateJavaScript:scriptString completionHandler:^(id _Nullable returnValue, NSError * _Nullable error) {
+                MTDetailLog(@"evaluateJavaScript result : \n error : %@  \nreturnValue:%@",error,returnValue);
+            }];
+        } else {
+            NSString *result = [_webView stringByEvaluatingJavaScriptFromString:scriptString];
+            MTDetailLog(@"stringByEvaluatingJavaScriptFromString result : \n error : %@",result);
         }
     }
 }
@@ -262,6 +307,7 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
         }
         [_exceptionView removeFromSuperview];
         _exceptionView.frame = self.bounds;
+        _exceptionView.backgroundColor = [UIColor whiteColor];
         [self addSubview:_exceptionView];
     });
 }
@@ -276,6 +322,7 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
         }
         [_exceptionView removeFromSuperview];
         _exceptionView.frame = self.bounds;
+        _exceptionView.backgroundColor = [UIColor whiteColor];
         [self addSubview:_exceptionView];
     });
 }
@@ -288,8 +335,6 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
         [self.delegate cdWebView:self didCalledJSFunctionName:message.name andParam:message.body];
     }
 }
-
-#pragma mark - some  web  mothed
 
 #pragma mark - Exception Controller Delegate
 - (void)reloadButtonPressEvent:(UIButton *)button andController:(CDLoadExceptionView *)exceptionController
