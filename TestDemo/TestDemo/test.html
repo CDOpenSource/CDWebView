@@ -1,28 +1,23 @@
+
+<!--  注意：实际开发中应该是一个正式的后台html页面，客户端通过url链接来访问，并将ios的SDK版本号作为参数传递到该页面 -->
+
 <!DOCTYPE html>
 <html class="fullpage">
-    <head lang="en">
-        <meta charset="UTF-8">
-    </head>
-    
+    <head lang="en">  <meta charset="UTF-8"> </head>
     
     <body>
-        
         <button font="40px Arial"  onclick="calledFunction()" >点击我可以调用你本地的oc代码哦</button>
-
-
- <script>
-     var SdkVersion = '8.1';   // 此变量的值是ios客户端运行的sdk版本号，  是客户端请求时必须附带过来的参数，在这里由于是加载的本地html 所以直接写死了我当前的测试机版本号8.1，（实际开发过程中 应该是由我们请求带参数发到服务器的）
-    function calledFunction()
-    {
-        if (SdkVersion >= 8.0) {
-            window.webkit.messageHandlers.TestJsCalledOCFunctionName.postMessage('WKWebView  called   !');
-        } else {
-            TestJsCalledOCFunctionName('UIWebView  called   !');
-        }
-    }
-    
-    </script>
-
-
+        
+        <script>
+            var SdkVersion = '8.1';   // 此变量的值是ios客户端运行的sdk版本号，  是客户端请求时必须附带过来的参数，在这里由于是加载的本地html 所以直接写死了我当前的测试机版本号8.1，（实际开发过程中 应该是由我们请求带参数发到服务器的）
+            function calledFunction() {
+                if (SdkVersion >= 8.0) {
+                    window.webkit.messageHandlers.TestJsCalledOCFunctionName.postMessage('WKWebView  called   !');
+                } else {
+                    TestJsCalledOCFunctionName('UIWebView  called   !');
+                }
+            }
+        </script>
+        
     </body>
 </html>

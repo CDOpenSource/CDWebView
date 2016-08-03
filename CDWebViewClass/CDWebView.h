@@ -53,25 +53,73 @@ typedef NS_ENUM(NSInteger, CDWebViewNavigationType) {
 - (instancetype)initWithDelegate:(id<CDWebViewDelegate>)delegate andView:(UIView *)view;
 - (void)evaluateJavaScriptWith:(NSString *)scriptString;
 
-- (void)reloadRequestWebData;
+- (void)loadRequestWebData;
 - (BOOL)canGoBack;
 - (BOOL)canGoForward;
 - (void)goBack;
 - (void)goForward;
+- (void)reload;
 
 @end
 
 
 
 @protocol CDWebViewDelegate <NSObject>
-@optional  //  loaded  web  data
+/*********************************************  loaded  web  data  ********************************************/
+@optional
+/**
+ *  是否允许加载请求页面的代理回调方法
+ *
+ *  @param webView        显示页面的web控件
+ *  @param request        请求封装对象
+ *  @param navigationType 导航类型
+ *
+ *  @return 是否允许加载的布尔值
+ */
 - (BOOL)cdWebView:(CDWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(CDWebViewNavigationType)navigationType;
+
+/**
+ *  已经开始加载页面的代理回调方法
+ *
+ *  @param webView 显示页面的web控件
+ */
 - (void)cdWebViewDidStartLoad:(CDWebView *)webView;
+
+/**
+ *  页面已经加载完成的代理回调方法
+ *
+ *  @param webView 显示页面的web控件
+ */
 - (void)cdWebViewDidFinishLoad:(CDWebView *)webView;
+
+/**
+ *  页面加载失败的代理回调方法
+ *
+ *  @param webView 显示页面的web控件
+ *  @param error   加载失败的错误信息
+ */
 - (void)cdWebView:(CDWebView *)webView  didLoadFailedWithError:(NSError *)error;
-@optional   //  js   oc  each other
+
+
+/*****************************************  js   oc  each other  ***************************************************/
+/**
+ *  获取要注册到后台html网页中js执行环境里面的一系列js的名字
+ *
+ *  @param webController 显示页面的web控件
+ *
+ *  @return 要注册的js名字的数组对象
+ */
 - (NSArray *)arrayOfRegisterToJSFunctionNameWithWebController:(CDWebView *)webController;
+
+/**
+ *  html页面调用了之前注册的js，会触发的客户端回调方法
+ *
+ *  @param webController 显示页面的web控件
+ *  @param functionName  html触发的js的名字
+ *  @param jsonString    由html传递过来的json参数
+ */
 - (void)cdWebView:(CDWebView *)webController didCalledJSFunctionName:(NSString *)functionName andParam:(id)jsonString;
+
 @end
 
 

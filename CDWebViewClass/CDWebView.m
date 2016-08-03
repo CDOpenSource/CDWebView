@@ -102,7 +102,7 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
 }
 
 #pragma mark - Public Method -
-- (void)reloadRequestWebData
+- (void)loadRequestWebData
 {
     if (self.request == nil) {
         return;
@@ -164,6 +164,15 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
         if ([_webView canGoForward]) {
             [_webView goForward];
         }
+    }
+}
+
+- (void)reload
+{
+    if (SDK_VERSION >= 8.0) {
+        [_wkWebView reload];
+    } else {
+        [_webView reload];
     }
 }
 
@@ -341,7 +350,7 @@ NSString *const CDLoadingExceptionButtonDecription = @"重新加载";
 {
     MTDetailLog(@"重新加载web数据！");
     //  重新发起请求web页面
-    [self reloadRequestWebData];
+    [self loadRequestWebData];
 }
 
 @end

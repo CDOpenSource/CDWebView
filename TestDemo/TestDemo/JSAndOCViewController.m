@@ -29,7 +29,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:localURL];
 
     _webView.request = request;
-    [_webView reloadRequestWebData];
+    [_webView loadRequestWebData];
 }
 
 

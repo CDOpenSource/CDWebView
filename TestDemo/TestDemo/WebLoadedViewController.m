@@ -30,7 +30,7 @@
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:6];
     _webView.request = request;
-    [_webView reloadRequestWebData];
+    [_webView loadRequestWebData];
 }
 
 - (void)back:(UIButton *)button
